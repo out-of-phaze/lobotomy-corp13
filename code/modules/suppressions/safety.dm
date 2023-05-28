@@ -25,7 +25,7 @@
 
 /datum/suppression/safety/proc/KillRegenerators()
 	for(var/obj/machinery/regenerator/R in GLOB.regenerators)
-		R.icon_state = "smoke0"
+		R.icon_state = R.broken_icon
 		R.reset_timer = INFINITY
 		R.burst_cooldown = TRUE
 		R.modified = TRUE
@@ -33,7 +33,7 @@
 // On lobotomy_corp meltdown event
 /datum/suppression/safety/proc/OnMeltdown(datum/source, ordeal = FALSE)
 	for(var/obj/machinery/regenerator/R in GLOB.regenerators)
-		R.icon_state = "smoke1"
+		R.icon_state = initial(R.icon_state)
 		R.reset_timer = 0
 		R.hp_bonus = 15
 		R.sp_bonus = 15
